@@ -1,0 +1,59 @@
+
+h1{
+    text-align: center;
+}
+.registration-container {
+    background-image: url('./assets/bg_register.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;   /* 容器的寬度 */
+    width: 100%;    /*視窗高度*/
+    height: 100vh; 
+}
+
+/* 表單容器樣式 */
+.form-container {
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    height: 100vh; /* 讓容器充滿整個視窗高度 */
+    background-color: transparent;
+}
+
+/* 表單樣式 */
+.form-group {
+    display: flex; /* 將 label 和 input 排成同一行 */
+    justify-content: space-between; /* 讓 label 和 input 分別對齊容器的左右兩側 */
+    align-items: center; /* 垂直方向對齊 */
+    margin-bottom: 16px; /* 控制每組的底部距離 */
+  }
+
+input {
+    border-radius: 20px;
+    padding: 10px;
+    font-size: large;
+    font-family: 'Arial', sans-serif; /* 字體樣式 */
+}
+
+label {
+    font-size: 16px; /* 字體大小 */
+    font-weight: bold; /* 字體粗細 */
+    color: #333; /* 字體顏色 */
+    font-family: 'Arial', sans-serif; /* 字體樣式 */
+    margin-right: 8px; /* 調整 label 與 input 的垂直距離 */
+}
+
+.submit-btn {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    width: 80%;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    border: 1px solid #333;
+    color: #fff; /* 字體顏色 */
+    background-color: #E94B42;
+}
