@@ -26,7 +26,7 @@ function RegistrationPage() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log("handleChange name: ", name, ' + value: ', value)
+        // console.log("handleChange name: ", name, ' + value: ', value)
         setFormData({
             ...formData,
             [name]: value
@@ -37,16 +37,18 @@ function RegistrationPage() {
         event.preventDefault();
         console.log('Form submitted:', formData);
         // Add form submission logic here
+        // 先判斷 confirm password 是否與 password 相同
+        if(formData.confirmPassword != formData.password) {
+            alert('The passwords do not match, please double-check.')
+            return
+        }
         axios.post(
             'https://run.mocky.io/v3/bc0997ca-458a-478c-b9f5-efbaa306ff8d', 
             formData)
         .then(response => {
             setResponse(response.data)
-            // setResponse(response.data);
-            
-            var code = resp.result.regist
-            console.log('resp code: ', code)
-            // alert('response code: ', code);
+            console.log(response.data)
+            console.log(response.data.code)
         })
         .catch(error => {
             alert('error: ', error);
