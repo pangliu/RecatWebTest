@@ -1,11 +1,17 @@
-import RegistrationPage from "./RegistrationPage"
 
-function MyComponent() {
-  return(<h1>安安你好</h1>)
-}
+import HomePage from "./pages/HomePage";
+import RegistrationPage from "./pages/RegistrationPage";
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
-  return(
-    <div><RegistrationPage/></div>
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<RegistrationPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="*" element={<div>404 - Page Not Found</div>} />
+      </Routes>
+    </Router>
   )
 }
 

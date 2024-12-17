@@ -1,28 +1,37 @@
 import React, { useState } from 'react';
-import './App.css';
+import { useNavigate } from 'react-router-dom';
+import '../App.css';
 import axios from 'axios';
 
 
 function RegistrationPage() {
+    const navigate = useNavigate(); // 用於跳轉的鉤子
     const [formData, setFormData] = useState({
         account: '',
         email: '',
-        promotionCode:'',
+        promotionCode: '',
         password: '',
-        confirmPassword:'',
-        phoneNumber:'',
-        firstName:'',
-        secondName:'',
-        cardNo:'',
-        mpin:''
+        confirmPassword: '',
+        phoneNumber: '',
+        firstName: '',
+        secondName: '',
+        cardNo: '',
+        mpin: ''
     });
     const [resp, setResponse] = useState({
-        code:'',
-        error_msg:'',
+        code: '',
+        error_msg: '',
         result: {
-            regist:''
+            regist: ''
         }
     });
+
+    // 過濾空白欄位
+    const filterEmptyFields = (data) => {
+        return Object.fromEntries(
+            Object.entries(data).filter(([_, value]) => value.trim() !== '')
+        );
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,26 +42,30 @@ function RegistrationPage() {
         });
     };
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add form submission logic here
         // 先判斷 confirm password 是否與 password 相同
-        if(formData.confirmPassword != formData.password) {
+        if (formData.confirmPassword != formData.password) {
             alert('The passwords do not match, please double-check.')
             return
         }
+        const filteredData = filterEmptyFields(formData);
+        console.log('filteredData submitted:', filteredData);
         axios.post(
-            'https://run.mocky.io/v3/bc0997ca-458a-478c-b9f5-efbaa306ff8d', 
-            formData)
-        .then(response => {
-            setResponse(response.data)
-            console.log(response.data)
-            console.log(response.data.code)
-        })
-        .catch(error => {
-            alert('error: ', error);
-        });
+            'https://run.mocky.io/v3/bc0997ca-458a-478c-b9f5-efbaa306ff8d',
+            filteredData)
+            .then(response => {
+                setResponse(response.data)
+                if (response.data.code == 200) {
+                    alert('Registration successful')
+                    navigate('/home')
+                } else {
+                    alert(response.data.error_msg)
+                }
+            })
+            .catch(error => {
+                alert('error: ', error);
+            });
     };
 
     return (
@@ -140,8 +153,8 @@ function RegistrationForm({ formData, handleChange, handleSubmit }) {
                         handleChange={handleChange}
                     />
                 </div>
-                <label className='label-title'>Bank Information</label>
-                <div className='form-type'>
+                <label className='label-title' hidden>Bank Information</label>
+                <div className='form-type' hidden>
                     <FormInput
                         label="card No."
                         type="number"
