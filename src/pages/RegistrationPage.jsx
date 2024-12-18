@@ -52,25 +52,25 @@ function RegistrationPage() {
             alert('The passwords do not match, please double-check.');
             return;
         }
-        setIsLoading(true)
+        setIsLoading(true);
         try {
             const filteredData = filterEmptyFields(formData);
             // 移除 confirm_password
             const { confirm_password, ...dataToSubmit } = filteredData;
             const response = await apiService.post(
-                ApiUrls.REGISTER, 
+                ApiUrls.REGISTER,
                 dataToSubmit
             );
-            if(response.code == 200) {
+            if (response.code == 200) {
                 alert('Registration successful');
                 navigate('/home');
             } else {
                 alert(response.data.error_msg);
             }
-        } catch(error) {
+        } catch (error) {
             alert('Registration failed. Please try again.', error);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     };
 
@@ -87,7 +87,7 @@ function RegistrationPage() {
     );
 }
 
-function RegistrationForm({ formData, handleChange, handleSubmit, isLoading}) {
+function RegistrationForm({ formData, handleChange, handleSubmit, isLoading }) {
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
@@ -185,12 +185,16 @@ function RegistrationForm({ formData, handleChange, handleSubmit, isLoading}) {
                         handleChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="submit-btn" disabled={isLoading}>
+                <button
+                    type="submit"
+                    className="submit-btn"
+                    disabled={isLoading}
+                >
                     {isLoading ? 'Registering...' : 'Register'}
                 </button>
             </form>
             {/* 顯示 ClipLoader 並套用位置樣式 */}
-            {isLoading && (<Loader />)}
+            {isLoading && <Loader />}
         </div>
     );
 }
@@ -212,16 +216,11 @@ function FormInput({ label, type, id, name, value, handleChange, required }) {
 }
 
 function Loader() {
-    return(
+    return (
         <div className="loader-container">
-            <ClipLoader
-                color="#EEEEEE"
-                size={70}
-                loading={true}
-
-            />
+            <ClipLoader color="#EEEEEE" size={70} loading={true} />
         </div>
-    )
+    );
 }
 
 export default RegistrationPage;

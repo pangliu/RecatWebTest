@@ -4,7 +4,7 @@ class ApiService {
     constructor(baseURL) {
         this.apiClient = axios.create({
             baseURL: baseURL,
-            timeout: 30000, // 設定超時時間
+            timeout: 30000 // 設定超時時間
         });
     }
 
