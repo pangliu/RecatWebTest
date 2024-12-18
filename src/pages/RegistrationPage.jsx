@@ -2,23 +2,24 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import ApiService from '../services/apiService';
+import ApiUrls from '../services/apiUrls';
 import { ClipLoader } from 'react-spinners';
 
-const apiService = new ApiService('https://run.mocky.io/');
+const apiService = new ApiService(ApiUrls.BASE_URL);
 
 function RegistrationPage() {
-    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         account: '',
-        email: '',
-        promotionCode: '',
+        mail: '',
+        promotion_code: '',
         password: '',
-        confirmPassword: '',
-        phoneNumber: '',
-        firstName: '',
-        secondName: '',
-        cardNo: '',
+        confirm_password: '',
+        phone: '',
+        first_name: '',
+        second_name: '',
+        card_no: '',
         mpin: ''
     });
     const [resp, setResponse] = useState({
@@ -47,18 +48,18 @@ function RegistrationPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         // 先判斷 confirm password 是否與 password 相同
-        if (formData.confirmPassword != formData.password) {
+        if (formData.confirm_password != formData.password) {
             alert('The passwords do not match, please double-check.');
             return;
         }
         setIsLoading(true)
-        const filteredData = filterEmptyFields(formData);
-        console.log('filteredData submitted:', filteredData);
         try {
-            console.log('call api')
+            const filteredData = filterEmptyFields(formData);
+            // 移除 confirm_password
+            const { confirm_password, ...dataToSubmit } = filteredData;
             const response = await apiService.post(
-                'v3/e45e52dc-c1c6-4009-88d0-d531530dd386', 
-                {filteredData}
+                ApiUrls.REGISTER, 
+                dataToSubmit
             );
             if(response.code == 200) {
                 alert('Registration successful');
@@ -104,18 +105,18 @@ function RegistrationForm({ formData, handleChange, handleSubmit, isLoading}) {
                     <FormInput
                         label="*Email"
                         type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
+                        id="mail"
+                        name="mail"
+                        value={formData.mail}
                         handleChange={handleChange}
                         required
                     />
                     <FormInput
                         label="*Promotion Code"
                         type="text"
-                        id="promotionCode"
-                        name="promotionCode"
-                        value={formData.promotionCode}
+                        id="promotion_code"
+                        name="promotion_code"
+                        value={formData.promotion_code}
                         handleChange={handleChange}
                         required
                     />
@@ -131,35 +132,35 @@ function RegistrationForm({ formData, handleChange, handleSubmit, isLoading}) {
                     <FormInput
                         label="*Confirm Password"
                         type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
+                        id="confirm_password"
+                        name="confirm_password"
+                        value={formData.confirm_password}
                         handleChange={handleChange}
                         required
                     />
                     <FormInput
                         label="*phone"
                         type="number"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
                         handleChange={handleChange}
                         required
                     />
                     <FormInput
                         label="First Name"
                         type="text"
-                        id="firstName"
-                        name="firstName"
-                        value={formData.firstName}
+                        id="first_name"
+                        name="first_name"
+                        value={formData.first_name}
                         handleChange={handleChange}
                     />
                     <FormInput
                         label="Second Name"
                         type="text"
-                        id="secondName"
-                        name="secondName"
-                        value={formData.secondName}
+                        id="second_name"
+                        name="second_name"
+                        value={formData.second_name}
                         handleChange={handleChange}
                     />
                 </div>
@@ -170,9 +171,9 @@ function RegistrationForm({ formData, handleChange, handleSubmit, isLoading}) {
                     <FormInput
                         label="card No."
                         type="number"
-                        id="cardNo"
-                        name="cardNo"
-                        value={formData.cardNo}
+                        id="card_no"
+                        name="card_no"
+                        value={formData.card_no}
                         handleChange={handleChange}
                     />
                     <FormInput

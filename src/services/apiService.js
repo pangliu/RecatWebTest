@@ -4,7 +4,7 @@ class ApiService {
     constructor(baseURL) {
         this.apiClient = axios.create({
             baseURL: baseURL,
-            timeout: 10000, // 設定超時時間
+            timeout: 30000, // 設定超時時間
         });
     }
 
@@ -20,7 +20,6 @@ class ApiService {
 
     // 設計一個通用的 POST 方法
     async post(endpoint, data = {}) {
-        console.log('post: ', data)
         try {
             const response = await this.apiClient.post(endpoint, data);
             return response.data;
@@ -31,8 +30,8 @@ class ApiService {
 
     // 通用的錯誤處理
     handleError(error) {
-        console.error('API Error:', error);
-        throw error; // 如果需要，這裡可以返回自定義的錯誤信息
+        // 如果需要，這裡可以返回自定義的錯誤信息
+        throw error;
     }
 }
 export default ApiService;
