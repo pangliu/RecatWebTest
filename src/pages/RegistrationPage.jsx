@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-
 function RegistrationPage() {
     const navigate = useNavigate(); // 用於跳轉的鉤子
     const [formData, setFormData] = useState({
@@ -46,24 +45,26 @@ function RegistrationPage() {
         event.preventDefault();
         // 先判斷 confirm password 是否與 password 相同
         if (formData.confirmPassword != formData.password) {
-            alert('The passwords do not match, please double-check.')
-            return
+            alert('The passwords do not match, please double-check.');
+            return;
         }
         const filteredData = filterEmptyFields(formData);
         console.log('filteredData submitted:', filteredData);
-        axios.post(
-            'https://run.mocky.io/v3/bc0997ca-458a-478c-b9f5-efbaa306ff8d',
-            filteredData)
-            .then(response => {
-                setResponse(response.data)
+        axios
+            .post(
+                'https://run.mocky.io/v3/bc0997ca-458a-478c-b9f5-efbaa306ff8d',
+                filteredData
+            )
+            .then((response) => {
+                setResponse(response.data);
                 if (response.data.code == 200) {
-                    alert('Registration successful')
-                    navigate('/home')
+                    alert('Registration successful');
+                    navigate('/home');
                 } else {
-                    alert(response.data.error_msg)
+                    alert(response.data.error_msg);
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 alert('error: ', error);
             });
     };
@@ -71,17 +72,21 @@ function RegistrationPage() {
     return (
         <div className="registration-container">
             <h1>Register</h1>
-            <RegistrationForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <RegistrationForm
+                formData={formData}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+            />
         </div>
     );
 }
 
 function RegistrationForm({ formData, handleChange, handleSubmit }) {
     return (
-        <div className='form-container'>
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
-                <label className='label-title'>User Information</label>
-                <div className='form-type'>
+                <label className="label-title">User Information</label>
+                <div className="form-type">
                     <FormInput
                         label="*Account"
                         type="text"
@@ -153,8 +158,10 @@ function RegistrationForm({ formData, handleChange, handleSubmit }) {
                         handleChange={handleChange}
                     />
                 </div>
-                <label className='label-title' hidden>Bank Information</label>
-                <div className='form-type' hidden>
+                <label className="label-title" hidden>
+                    Bank Information
+                </label>
+                <div className="form-type" hidden>
                     <FormInput
                         label="card No."
                         type="number"
@@ -172,7 +179,9 @@ function RegistrationForm({ formData, handleChange, handleSubmit }) {
                         handleChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="submit-btn" >register</button>
+                <button type="submit" className="submit-btn">
+                    register
+                </button>
             </form>
         </div>
     );
