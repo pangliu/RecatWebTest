@@ -4,7 +4,7 @@
 function HomePage() {
     return (
         <div>
-            <h1>Homepage</h1>
+            <h1>Registration successful</h1>
         </div>
     )
 }

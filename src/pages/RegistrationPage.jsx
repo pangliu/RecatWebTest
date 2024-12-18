@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import axios from 'axios';
+import ApiService from '../services/apiService';
+import { ClipLoader } from 'react-spinners';
+
+const apiService = new ApiService('https://run.mocky.io/');
 
 function RegistrationPage() {
-    const navigate = useNavigate(); // 用於跳轉的鉤子
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         account: '',
         email: '',
@@ -34,7 +38,6 @@ function RegistrationPage() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        // console.log("handleChange name: ", name, ' + value: ', value)
         setFormData({
             ...formData,
             [name]: value
@@ -48,25 +51,26 @@ function RegistrationPage() {
             alert('The passwords do not match, please double-check.');
             return;
         }
+        setIsLoading(true)
         const filteredData = filterEmptyFields(formData);
         console.log('filteredData submitted:', filteredData);
-        axios
-            .post(
-                'https://run.mocky.io/v3/bc0997ca-458a-478c-b9f5-efbaa306ff8d',
-                filteredData
-            )
-            .then((response) => {
-                setResponse(response.data);
-                if (response.data.code == 200) {
-                    alert('Registration successful');
-                    navigate('/home');
-                } else {
-                    alert(response.data.error_msg);
-                }
-            })
-            .catch((error) => {
-                alert('error: ', error);
-            });
+        try {
+            console.log('call api')
+            const response = await apiService.post(
+                'v3/e45e52dc-c1c6-4009-88d0-d531530dd386', 
+                {filteredData}
+            );
+            if(response.code == 200) {
+                alert('Registration successful');
+                navigate('/home');
+            } else {
+                alert(response.data.error_msg);
+            }
+        } catch(error) {
+            alert('Registration failed. Please try again.', error);
+        } finally {
+            setIsLoading(false)
+        }
     };
 
     return (
@@ -76,12 +80,13 @@ function RegistrationPage() {
                 formData={formData}
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
+                isLoading={isLoading}
             />
         </div>
     );
 }
 
-function RegistrationForm({ formData, handleChange, handleSubmit }) {
+function RegistrationForm({ formData, handleChange, handleSubmit, isLoading}) {
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
@@ -179,10 +184,12 @@ function RegistrationForm({ formData, handleChange, handleSubmit }) {
                         handleChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="submit-btn">
-                    register
+                <button type="submit" className="submit-btn" disabled={isLoading}>
+                    {isLoading ? 'Registering...' : 'Register'}
                 </button>
             </form>
+            {/* 顯示 ClipLoader 並套用位置樣式 */}
+            {isLoading && (<Loader />)}
         </div>
     );
 }
@@ -201,6 +208,19 @@ function FormInput({ label, type, id, name, value, handleChange, required }) {
             />
         </div>
     );
+}
+
+function Loader() {
+    return(
+        <div className="loader-container">
+            <ClipLoader
+                color="#EEEEEE"
+                size={70}
+                loading={true}
+
+            />
+        </div>
+    )
 }
 
 export default RegistrationPage;
