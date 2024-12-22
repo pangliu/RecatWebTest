@@ -7,86 +7,6 @@ import { ClipLoader } from 'react-spinners';
 
 const apiService = new ApiService(ApiUrls.BASE_URL);
 
-function RegistrationPage() {
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [formData, setFormData] = useState({
-        account: '',
-        mail: '',
-        promotion_code: '',
-        password: '',
-        confirm_password: '',
-        phone: '',
-        first_name: '',
-        second_name: '',
-        card_no: '',
-        mpin: ''
-    });
-    const [resp, setResponse] = useState({
-        code: '',
-        error_msg: '',
-        result: {
-            regist: ''
-        }
-    });
-
-    // 過濾空白欄位
-    const filterEmptyFields = (data) => {
-        return Object.fromEntries(
-            Object.entries(data).filter(([_, value]) => value.trim() !== '')
-        );
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        // 先判斷 confirm password 是否與 password 相同
-        if (formData.confirm_password != formData.password) {
-            alert('The passwords do not match, please double-check.');
-            return;
-        }
-        setIsLoading(true);
-        try {
-            const filteredData = filterEmptyFields(formData);
-            // 移除 confirm_password
-            const { confirm_password, ...dataToSubmit } = filteredData;
-            const response = await apiService.post(
-                ApiUrls.REGISTER,
-                dataToSubmit
-            );
-            if (response.code == 200) {
-                alert('Registration successful');
-                navigate('/home');
-            } else {
-                alert(response.data.error_msg);
-            }
-        } catch (error) {
-            alert('Registration failed. Please try again.', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    return (
-        <div className="registration-container">
-            <h1>Register</h1>
-            <RegistrationForm
-                formData={formData}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                isLoading={isLoading}
-            />
-        </div>
-    );
-}
-
 function RegistrationForm({ formData, handleChange, handleSubmit, isLoading }) {
     return (
         <div className="form-container">
@@ -219,6 +139,87 @@ function Loader() {
     return (
         <div className="loader-container">
             <ClipLoader color="#EEEEEE" size={70} loading={true} />
+        </div>
+    );
+}
+
+function RegistrationPage() {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        account: '',
+        mail: '',
+        promotion_code: '',
+        password: '',
+        confirm_password: '',
+        phone: '',
+        first_name: '',
+        second_name: '',
+        card_no: '',
+        mpin: ''
+    });
+    const [resp, setResponse] = useState({
+        code: '',
+        error_msg: '',
+        result: {
+            regist: ''
+        }
+    });
+
+    // 過濾空白欄位
+    const filterEmptyFields = (data) => {
+        return Object.fromEntries(
+            Object.entries(data).filter(([_, value]) => value.trim() !== '')
+        );
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // 先判斷 confirm password 是否與 password 相同
+        if (formData.confirm_password != formData.password) {
+            alert('The passwords do not match, please double-check.');
+            return;
+        }
+        setIsLoading(true);
+        try {
+            const filteredData = filterEmptyFields(formData);
+            // 移除 confirm_password
+            const { confirm_password, ...dataToSubmit } = filteredData;
+            const response = await apiService.post(
+                ApiUrls.REGISTER,
+                dataToSubmit
+            );
+            if (response.code == 200) {
+                alert('Registration successful');
+                navigate('/home');
+            } else {
+                console.log('code: ', response.code);
+                alert(response.data.error_msg);
+            }
+        } catch (error) {
+            alert('Registration failed. Please try again.', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className="registration-container">
+            <h1>Register</h1>
+            <RegistrationForm
+                formData={formData}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                isLoading={isLoading}
+            />
         </div>
     );
 }
