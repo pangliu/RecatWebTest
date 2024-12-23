@@ -4,7 +4,7 @@ import '../App.css';
 import ApiService from '../services/apiService';
 import ApiUrls from '../services/apiUrls';
 import { ClipLoader } from 'react-spinners';
-import {OrbitProgress} from 'react-loading-indicators'
+import { OrbitProgress } from 'react-loading-indicators';
 
 const apiService = new ApiService(ApiUrls.TEST_BASE_URL);
 
@@ -139,7 +139,13 @@ function FormInput({ label, type, id, name, value, handleChange, required }) {
 function Loader() {
     return (
         <div className="loader-container">
-            <OrbitProgress variant="spokes" color="#dcd6d6" size="medium" text="" textColor="" />
+            <OrbitProgress
+                variant="spokes"
+                color="#dcd6d6"
+                size="medium"
+                text=""
+                textColor=""
+            />
         </div>
     );
 }

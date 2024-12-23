@@ -12,9 +12,9 @@ const SidebarContent = () => {
     return (
         <div>
             <h2>Menu</h2>
-            <ul className='menu-list'>
+            <ul className="menu-list">
                 {SiderbarData.map((item, index) => {
-                    return(
+                    return (
                         <li key={index} className={item.cName}>
                             <Link to={item.path}>
                                 {item.icon}
