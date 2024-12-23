@@ -8,9 +8,9 @@ const Layout = () => {
             {/* 左側側邊欄，固定不變 */}
             <aside
                 style={{
-                    width: '250px',
-                    background: '#f0f0f0',
-                    padding: '20px',
+                    width: '230px',
+                    background: '#ffe4c4',
+                    padding: '10px',
                     height: '100vh', // 側邊欄高度填滿視窗
                     boxShadow: '2px 0 5px rgba(0,0,0,0.1)'
                 }}

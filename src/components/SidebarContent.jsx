@@ -10,9 +10,9 @@ const SidebarContent = () => {
     const showSidebar = () => setSidear(!sidebar);
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div>
             <h2>Menu</h2>
-            <ul>
+            <ul className='menu-list'>
                 {SiderbarData.map((item, index) => {
                     return(
                         <li key={index} className={item.cName}>

@@ -4,8 +4,9 @@ import '../App.css';
 import ApiService from '../services/apiService';
 import ApiUrls from '../services/apiUrls';
 import { ClipLoader } from 'react-spinners';
+import {OrbitProgress} from 'react-loading-indicators'
 
-const apiService = new ApiService(ApiUrls.BASE_URL);
+const apiService = new ApiService(ApiUrls.TEST_BASE_URL);
 
 function RegistrationForm({ formData, handleChange, handleSubmit, isLoading }) {
     return (
@@ -138,7 +139,7 @@ function FormInput({ label, type, id, name, value, handleChange, required }) {
 function Loader() {
     return (
         <div className="loader-container">
-            <ClipLoader color="#EEEEEE" size={70} loading={true} />
+            <OrbitProgress variant="spokes" color="#dcd6d6" size="medium" text="" textColor="" />
         </div>
     );
 }
@@ -194,7 +195,7 @@ function RegistrationPage() {
             // 移除 confirm_password
             const { confirm_password, ...dataToSubmit } = filteredData;
             const response = await apiService.post(
-                ApiUrls.REGISTER,
+                ApiUrls.TEST_REGISTER,
                 dataToSubmit
             );
             if (response.code == 200) {
