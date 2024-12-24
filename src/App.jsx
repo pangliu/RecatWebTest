@@ -6,6 +6,7 @@ import About from './pages/About';
 import Announcement from './pages/Announcement';
 import RegistrationPage from './pages/RegistrationPage';
 import Login from './pages/Login';
+import DownloadPage from './pages/DownloadPage';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 {/* 註冊頁面 - 不包含側邊欄 */}
                 <Route path="/register" element={<RegistrationPage />} />
+                <Route path="/download" element={<DownloadPage />} />
                 <Route path="/login" element={<Login />} />
                 {/* 將 Layout 作為固定框架 */}
                 <Route path="/home" element={<Layout />}>
