@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import ApiService from '../services/apiService';
 import ApiUrls from '../services/apiUrls';
-import { ClipLoader } from 'react-spinners';
 import { OrbitProgress } from 'react-loading-indicators';
 
 const apiService = new ApiService(ApiUrls.TEST_BASE_URL);

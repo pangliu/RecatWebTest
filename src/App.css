@@ -105,7 +105,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .form-login {
-    background-color: bisque;
+    background-color: #ffe4c4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,4 +145,12 @@ input[type='number']::-webkit-outer-spin-button {
     background-color: #e94b42;
     display: grid;
     justify-self: center;
+}
+
+.form-ann-input {
+    justify-self: center;
+    padding: 10px;
+    font-size: large;
+    font-family: 'Arial', sans-serif;
+    width: 50%;
 }
