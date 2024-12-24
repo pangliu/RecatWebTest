@@ -4,14 +4,15 @@ import '../App.css';
 import ApiService from '../services/apiService';
 import ApiUrls from '../services/apiUrls';
 import { OrbitProgress } from 'react-loading-indicators';
+import './RegistrationPage.css';
 
-const apiService = new ApiService(ApiUrls.TEST_BASE_URL);
+const apiService = new ApiService(ApiUrls.BASE_URL);
 
 function RegistrationForm({ formData, handleChange, handleSubmit, isLoading }) {
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
-                <label className="label-title">User Information</label>
+                <label className="-labeltitle">User Information</label>
                 <div className="form-type">
                     <FormInput
                         label="*Account"
@@ -124,6 +125,7 @@ function FormInput({ label, type, id, name, value, handleChange, required }) {
         <div className="form-group">
             <label htmlFor={id}>{label}</label>
             <input
+                className="input-register"
                 type={type}
                 id={id}
                 name={name}
@@ -200,12 +202,12 @@ function RegistrationPage() {
             // 移除 confirm_password
             const { confirm_password, ...dataToSubmit } = filteredData;
             const response = await apiService.post(
-                ApiUrls.TEST_REGISTER,
+                ApiUrls.REGISTER,
                 dataToSubmit
             );
             if (response.code == 200) {
                 alert('Registration successful');
-                navigate('/home');
+                // navigate('/home');
             } else {
                 console.log('code: ', response.code);
                 alert(response.data.error_msg);

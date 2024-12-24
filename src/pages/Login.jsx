@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import * as IoIcons from 'react-icons/io';
 import { PiPasswordFill } from 'react-icons/pi';
-import { ClipLoader } from 'react-spinners';
 import ApiService from '../services/apiService';
 import ApiUrls from '../services/apiUrls';
 import { useNavigate } from 'react-router-dom';
 import { OrbitProgress } from 'react-loading-indicators';
+import './Login.css';
 
 const apiService = new ApiService(ApiUrls.TEST_BASE_URL);
 
@@ -13,6 +13,7 @@ function FormInput({ type, name, value, handleChange, required }) {
     return (
         <div className="form-login-group">
             <input
+                className="input-login"
                 type={type}
                 name={name}
                 value={value}
@@ -26,7 +27,6 @@ function FormInput({ type, name, value, handleChange, required }) {
 function Loader() {
     return (
         <div className="loader-container">
-            {/* <ClipLoader color="#EEEEEE" size={70} loading={true} /> */}
             <OrbitProgress
                 variant="spokes"
                 color="#f10a0a"
@@ -68,6 +68,8 @@ function Login() {
                 alert(response.error_msg);
             }
         } catch (error) {
+            console.log('code: ', response.code);
+            alert(response.data.error_msg);
         } finally {
             setIsLoading(false);
         }

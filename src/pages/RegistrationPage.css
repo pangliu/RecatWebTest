@@ -1,0 +1,82 @@
+/* 表單容器樣式 */
+.form-container {
+    display: flex;
+    justify-content: center;
+    /* 水平置中 */
+    align-items: center;
+    /* 垂直置中 */
+    background-color: transparent;
+}
+
+/* 表單樣式 */
+.form-group {
+    display: flex;
+    /* 將 label 和 input 排成同一行 */
+    justify-content: space-between;
+    /* 讓 label 和 input 分別對齊容器的左右兩側 */
+    align-items: center;
+    /* 垂直方向對齊 */
+    margin-bottom: 16px;
+    /* 控制每組的底部距離 */
+}
+
+.label-title {
+    font-size: x-large;
+}
+
+.form-type {
+    border: 2px solid #eee;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.input-register {
+    border-radius: 20px;
+    padding: 10px;
+    font-size: large;
+    font-family: 'Arial', sans-serif;
+    /* 字體樣式 */
+    border: 1px solid transparent;
+    color: #fff;
+    background-color: rgba(42, 42, 42, 0.5);
+}
+
+.registration-container {
+    background-image: url('../assets/bg_register.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* 容器的寬度 */
+    width: 100%;
+    /*視窗高度*/
+    height: 100vh;
+}
+
+.submit-btn {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    width: 80%;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    border: 1px solid transparent;
+    color: #fff;
+    /* 字體顏色 */
+    background-color: #e94b42;
+}
+
+.loader-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 使其真正的居中 */
+    z-index: 9999;
+    /* 確保它在其他內容上面 */
+}
