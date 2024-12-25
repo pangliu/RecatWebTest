@@ -6,7 +6,7 @@ function DownloadPage() {
     const url = 'https://www.example.com'; // 這是你想顯示的 QR Code 資料
     return (
         <div className="page-container">
-            <image className="img-ninja"></image>
+            <div className="img-ninja"></div>
             <div className="qrcode-container">
                 <QRCodeSVG
                     className="qrcode-svg"
@@ -14,13 +14,13 @@ function DownloadPage() {
                     bgColor="#FFFFFF"
                     fgColor="#000000"
                 />
-                <a className="url" href={url} target="_blank">
+                <a className="url" href={url}>
                     click it to download APK
                 </a>
             </div>
             <div className="warrning-container">
                 <div className="warrning-title">
-                    <img className="img-icon"></img>
+                    <div className="img-icon"></div>
                     <div className="text-title">Attention</div>
                 </div>
                 <p>
