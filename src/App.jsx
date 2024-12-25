@@ -4,16 +4,18 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Announcement from './pages/Announcement';
-import RegistrationPage from './pages/RegistrationPage';
+import Register from './pages/register';
 import Login from './pages/Login';
 import DownloadPage from './pages/DownloadPage';
+import Pending from './pages/Pending';
 
 function App() {
     return (
         <Router>
             <Routes>
                 {/* 註冊頁面 - 不包含側邊欄 */}
-                <Route path="/register" element={<RegistrationPage />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/pending" element={<Pending />} />
                 <Route path="/download" element={<DownloadPage />} />
                 <Route path="/login" element={<Login />} />
                 {/* 將 Layout 作為固定框架 */}

@@ -12,7 +12,7 @@ function RegistrationForm({ formData, handleChange, handleSubmit, isLoading }) {
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
-                <label className="-labeltitle">User Information</label>
+                <label className="label-title">User Information</label>
                 <div className="form-type">
                     <FormInput
                         label="*Account"
@@ -220,7 +220,7 @@ function RegistrationPage() {
     };
 
     return (
-        <div className="registration-container">
+        <div>
             <h1>Register</h1>
             <RegistrationForm
                 formData={formData}
