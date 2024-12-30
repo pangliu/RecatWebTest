@@ -80,28 +80,7 @@ function Register() {
             alert('The passwords do not match, please double-check.');
             return;
         }
-        setIsLoading(true);
-        try {
-            const filteredData = filterEmptyFields(formData);
-            // 移除 confirm_password
-            const { confirm_password, ...dataToSubmit } = filteredData;
-            const response = await apiService.post(
-                ApiUrls.REGISTER,
-                dataToSubmit
-            );
-            console.log('response: ', response);
-            if (response.code == 200) {
-                alert('Registration successful');
-                navigate('/pending');
-            } else {
-                console.log('code: ', response.code);
-                alert(response.error_msg);
-            }
-        } catch (error) {
-            alert('Registration failed. Please try again.', error);
-        } finally {
-            setIsLoading(false);
-        }
+        navigate('/register_bank', { state: { registerData: formData } });
     };
     return (
         <div>
@@ -203,7 +182,7 @@ function Register() {
                             backgroundColor: isFormValid ? '#DF4A3B' : '#BBBBBB'
                         }}
                     >
-                        {isLoading ? 'Registering...' : 'Register'}
+                        {isLoading ? 'Registering...' : 'Next'}
                     </button>
                 </form>
                 {isLoading && <Loader />}
