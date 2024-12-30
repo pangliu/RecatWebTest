@@ -11,14 +11,14 @@
 .img-ninja {
     background-image: url('../assets/bg_ninja.png');
     background-repeat: no-repeat;
-    background-size: contain;
-    position: fixed;
+    background-size: cover;
+    position: absolute;
     /* 固定在畫面某個位置 */
     bottom: 0;
     right: 0;
     /* 對齊右側 */
-    width: 30%;
-    height: 40%;
+    width: 300px;
+    height: 300px;
     /* 設定圖片寬度，可根據需求調整 */
     margin-right: 10px;
 }

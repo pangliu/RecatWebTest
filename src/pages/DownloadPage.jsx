@@ -3,19 +3,18 @@ import React from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 
 function DownloadPage() {
-    const url = 'https://www.example.com'; // 這是你想顯示的 QR Code 資料
+    const url = 'https://github.com/pangliu/apk-download/raw/refs/heads/main/app-dev-debug-androidTest.apk'; // 這是你想顯示的 QR Code 資料
     return (
         <div className="page-container">
             <div className="img-ninja"></div>
             <div className="qrcode-container">
-                <QRCodeSVG
-                    className="qrcode-svg"
-                    value={url}
-                    bgColor="#FFFFFF"
-                    fgColor="#000000"
-                />
-                <a className="url" href={url}>
-                    click it to download APK
+                <a href={url} style={{ display: "inline-block" }}>
+                    <QRCodeSVG
+                        className="qrcode-svg"
+                        value={url}
+                        bgColor="#FFFFFF"
+                        fgColor="#000000"
+                    />
                 </a>
             </div>
             <div className="warrning-container">
