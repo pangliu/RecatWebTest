@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Register.css';
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ApiService from '../services/apiService';
 import ApiUrls from '../services/apiUrls';
-import Select from 'react-select'
+import Select from 'react-select';
 import { OrbitProgress } from 'react-loading-indicators';
 
 const apiService = new ApiService(ApiUrls.BASE_URL);
@@ -39,9 +39,7 @@ function FormInput({ type, name, value, handleChange, required }) {
 }
 
 function RegisterBank() {
-    const options = [
-        { value: '1', label: 'GCASH' },
-    ]
+    const options = [{ value: '1', label: 'GCASH' }];
     const location = useLocation();
     const registerData = location.state?.registerData;
     const navigate = useNavigate();
@@ -49,10 +47,10 @@ function RegisterBank() {
     const [bankData, setBankData] = useState({
         card_title: '',
         card_account: '',
-        card_number:'',
-        card_password:'',
-        card_balance:'',
-        card_payment_id:'',
+        card_number: '',
+        card_password: '',
+        card_balance: '',
+        card_payment_id: '',
         account: registerData.account,
         mail: registerData.mail,
         promotion_code: registerData.promotion_code,
@@ -60,7 +58,7 @@ function RegisterBank() {
         phone: registerData.phone,
         first_name: registerData.first_name,
         second_name: registerData.second_name
-    })
+    });
 
     // 檢查必填欄位是否完成
     const isFormValid =
@@ -73,10 +71,10 @@ function RegisterBank() {
 
     const handleSelectChange = (selectedOption) => {
         setBankData((prevBankData) => ({
-          ...prevBankData, // 保留其他欄位的值
-          card_payment_id: selectedOption.value // 更新 card_payment_id
+            ...prevBankData, // 保留其他欄位的值
+            card_payment_id: selectedOption.value // 更新 card_payment_id
         }));
-      };
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -90,10 +88,7 @@ function RegisterBank() {
         event.preventDefault();
         setIsLoading(true);
         try {
-            const response = await apiService.post(
-                ApiUrls.REGISTER,
-                bankData
-            );
+            const response = await apiService.post(ApiUrls.REGISTER, bankData);
             if (response.code == 200) {
                 alert('Registration successful');
                 navigate('/pending');
@@ -108,42 +103,51 @@ function RegisterBank() {
         }
     };
 
-    return(
+    return (
         <div>
             <div className="bg-top"></div>
             <div className="ic-top-left"></div>
             <div className="page-title">Register</div>
             <div className="register-container">
                 <div>
-                    <span className="content-text-black">
-                        You need to
+                    <span className="content-text-black">You need to</span>
+                    <span className="content-text-red">
+                        {' '}
+                        link your primary payment getway{' '}
                     </span>
-                    <span className="content-text-red"> link your primary payment getway </span>
                     <span className="content-text-black">
                         account during registration to start receiving tasks.
                     </span>
                 </div>
                 <div>
-                    <span className="content-text-black">Currently, you can </span>
-                    <span className="content-text-red">only select one getway. </span>
+                    <span className="content-text-black">
+                        Currently, you can{' '}
+                    </span>
+                    <span className="content-text-red">
+                        only select one getway.{' '}
+                    </span>
                 </div>
                 <div>
                     <span className="content-text-red">
-                        After completing registration, you can set up additional payment getway.
+                        After completing registration, you can set up additional
+                        payment getway.
                     </span>
                 </div>
                 <img className="divider"></img>
                 <form
                     className="form-register-container"
-                    onSubmit={handleSubmit}>
-                    <label className="label-input">*PrimaryPayment Getway</label>
-                    <Select 
+                    onSubmit={handleSubmit}
+                >
+                    <label className="label-input">
+                        *PrimaryPayment Getway
+                    </label>
+                    <Select
                         options={options}
-                        efaultValue ={options[0]}
+                        efaultValue={options[0]}
                         onChange={handleSelectChange}
                         required
-                        />
-                    <div className='bank-info'>
+                    />
+                    <div className="bank-info">
                         <label className="label-input">*Account Title</label>
                         <FormInput
                             type="text"
@@ -160,7 +164,9 @@ function RegisterBank() {
                             handleChange={handleChange}
                             required
                         />
-                        <label className="label-input">*Gcash card number</label>
+                        <label className="label-input">
+                            *Gcash card number
+                        </label>
                         <FormInput
                             type="number"
                             name="card_number"
@@ -190,15 +196,18 @@ function RegisterBank() {
                             </span>
                         </div>
                     </div>
-                    <div className='container-flex'>
+                    <div className="container-flex">
                         <img className="divider"></img>
                         <button
                             type="submit"
                             className="register-btn"
                             disabled={!isFormValid}
                             style={{
-                                backgroundColor: isFormValid ? '#DF4A3B' : '#BBBBBB'
-                            }}>
+                                backgroundColor: isFormValid
+                                    ? '#DF4A3B'
+                                    : '#BBBBBB'
+                            }}
+                        >
                             {isLoading ? 'Registering...' : 'Register'}
                         </button>
                     </div>

@@ -7,7 +7,7 @@ import Announcement from './pages/Announcement';
 import Login from './pages/Login';
 import DownloadPage from './pages/DownloadPage';
 import Pending from './pages/Pending';
-import RegisterBank from './pages/RegisterBank'
+import RegisterBank from './pages/RegisterBank';
 import Register from './pages/register';
 
 function App() {
