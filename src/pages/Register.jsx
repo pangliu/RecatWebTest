@@ -29,6 +29,7 @@ function FormInput({ type, name, value, handleChange, required }) {
                 type={type}
                 name={name}
                 value={value}
+                autoComplete="new-password"
                 onChange={handleChange}
                 required={required}
             />

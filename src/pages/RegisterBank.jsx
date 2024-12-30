@@ -30,6 +30,7 @@ function FormInput({ type, name, value, handleChange, required }) {
                 className="forminput-style"
                 type={type}
                 name={name}
+                autoComplete="new-password"
                 value={value}
                 onChange={handleChange}
                 required={required}
