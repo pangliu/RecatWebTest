@@ -92,7 +92,7 @@ function RegisterBank() {
             const response = await apiService.post(ApiUrls.REGISTER, bankData);
             if (response.code == 200) {
                 alert('Registration successful');
-                navigate('/pending');
+                navigate('/download');
             } else {
                 console.log('code: ', response.code);
                 alert(response.error_msg);

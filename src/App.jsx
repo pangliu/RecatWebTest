@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import DownloadPage from './pages/DownloadPage';
 import Pending from './pages/Pending';
 import RegisterBank from './pages/RegisterBank';
-import Register from './pages/register';
+import Register from './pages/Register'
 
 function App() {
     return (
