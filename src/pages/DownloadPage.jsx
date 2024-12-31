@@ -3,7 +3,7 @@ import React from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 
 function DownloadPage() {
-    const url = 'https://drive.google.com/file/d/17BfIDhSyTUnWJ1ds6onJiduQXRwaH9Z6/view?usp=drive_link'; // 這是你想顯示的 QR Code 資料
+    const url = 'https://github.com/pangliu/apk-download/raw/refs/heads/main/app-dev-debug.apk'; // 這是你想顯示的 QR Code 資料
     return (
         <div className="page-container">
             <div className="img-ninja"></div>
