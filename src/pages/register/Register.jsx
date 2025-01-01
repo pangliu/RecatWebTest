@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Register.css';
-import ApiService from '../services/apiService';
-import ApiUrls from '../services/apiUrls';
+import styles from './Register.module.css';
+import ApiService from '../../services/apiService';
+import ApiUrls from '../../services/apiUrls';
 import { useNavigate } from 'react-router-dom';
 import { OrbitProgress } from 'react-loading-indicators';
 
@@ -9,7 +9,7 @@ const apiService = new ApiService(ApiUrls.BASE_URL);
 
 function Loader() {
     return (
-        <div className="loader-container">
+        <div className={styles.loaderContainer}>
             <OrbitProgress
                 variant="spokes"
                 color="#dcd6d6"
@@ -25,7 +25,7 @@ function FormInput({ type, name, value, handleChange, required }) {
     return (
         <div>
             <input
-                className="forminput-style"
+                className={styles.forminputStyle}
                 type={type}
                 name={name}
                 value={value}
@@ -84,36 +84,35 @@ function Register() {
         navigate('/register_bank', { state: { registerData: formData } });
     };
     return (
-        <div>
-            <div className="bg-top"></div>
-            <div className="ic-top-left"></div>
-            <div className="page-title">Register</div>
-            <div className="register-container">
+        <div className={styles.layoutContainer}>
+            <div className={styles.bgTop}></div>
+            <div className={styles.icTopLeft}></div>
+            <div className={styles.pageTitle}>Register</div>
+            <div className={styles.registerContainer}>
                 <div>
-                    <span className="content-text-black">
+                    <span className={styles.contentTextBlack}>
                         Please provide complete and accurate details for
                     </span>
-                    <span className="content-text-red "> manual review.</span>
+                    <span className={styles.contentTextRed}> manual review.</span>
                 </div>
                 <div>
-                    <span className="content-text-red ">
+                    <span className={styles.contentTextRed}>
                         Incomplete or incorrect
                     </span>
-                    <span className="content-text-black">
+                    <span className={styles.contentTextBlack}>
                         {' '}
                         info may lead to
                     </span>
-                    <span className="content-text-red ">
+                    <span className={styles.contentTextRed}>
                         {' '}
                         registration rejection.
                     </span>
                 </div>
-                <img className="divider"></img>
+                <img className={styles.divider}></img>
                 <form
-                    className="form-register-container"
                     onSubmit={handleSubmit}
                 >
-                    <label className="label-input">*Account</label>
+                    <label className={styles.labelInput}>*Account</label>
                     <FormInput
                         type="text"
                         name="account"
@@ -121,7 +120,7 @@ function Register() {
                         handleChange={handleChange}
                         required
                     />
-                    <label className="label-input">*Password</label>
+                    <label className={styles.labelInput}>*Password</label>
                     <FormInput
                         type="password"
                         name="password"
@@ -129,7 +128,7 @@ function Register() {
                         handleChange={handleChange}
                         required
                     />
-                    <label className="label-input">*Confirm Password</label>
+                    <label className={styles.labelInput}>*Confirm Password</label>
                     <FormInput
                         type="password"
                         name="confirm_password"
@@ -137,21 +136,21 @@ function Register() {
                         handleChange={handleChange}
                         required
                     />
-                    <label className="label-input">First Name</label>
+                    <label className={styles.labelInput}>First Name</label>
                     <FormInput
                         type="text"
                         name="first_name"
                         value={formData.first_name}
                         handleChange={handleChange}
                     />
-                    <label className="label-input">Last Name</label>
+                    <label className={styles.labelInput}>Last Name</label>
                     <FormInput
                         type="text"
                         name="second_name"
                         value={formData.second_name}
                         handleChange={handleChange}
                     />
-                    <label className="label-input">*Email</label>
+                    <label className={styles.labelInput}>*Email</label>
                     <FormInput
                         type="email"
                         name="mail"
@@ -159,7 +158,7 @@ function Register() {
                         handleChange={handleChange}
                         required
                     />
-                    <label className="label-input">*Phone</label>
+                    <label className={styles.labelInput}>*Phone</label>
                     <FormInput
                         type="number"
                         name="phone"
@@ -167,7 +166,7 @@ function Register() {
                         handleChange={handleChange}
                         required
                     />
-                    <label className="label-input">*Promotion Code</label>
+                    <label className={styles.labelInput}>*Promotion Code</label>
                     <FormInput
                         type="text"
                         name="promotion_code"
@@ -177,7 +176,7 @@ function Register() {
                     />
                     <button
                         type="submit"
-                        className="submit-btn"
+                        className={styles.submitBtn}
                         disabled={!isFormValid}
                         style={{
                             backgroundColor: isFormValid ? '#DF4A3B' : '#BBBBBB'

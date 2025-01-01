@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './Register.css';
+import styles from './Register.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import ApiService from '../services/apiService';
-import ApiUrls from '../services/apiUrls';
+import ApiService from '../../services/apiService';
+import ApiUrls from '../../services/apiUrls';
 import Select from 'react-select';
 import { OrbitProgress } from 'react-loading-indicators';
 
@@ -11,7 +11,7 @@ const apiService = new ApiService(ApiUrls.BASE_URL);
 
 function Loader() {
     return (
-        <div className="loader-container">
+        <div className={styles.loaderContainer}>
             <OrbitProgress
                 variant="spokes"
                 color="#dcd6d6"
@@ -27,7 +27,7 @@ function FormInput({ type, name, value, handleChange, required }) {
     return (
         <div>
             <input
-                className="forminput-style"
+                className={styles.forminputStyle}
                 type={type}
                 name={name}
                 autoComplete="new-password"
@@ -105,41 +105,40 @@ function RegisterBank() {
     };
 
     return (
-        <div>
-            <div className="bg-top"></div>
-            <div className="ic-top-left"></div>
-            <div className="page-title">Register</div>
-            <div className="register-container">
+        <div className={styles.layoutContainer}>
+            <div className={styles.bgTop}></div>
+            <div className={styles.icTopLeft}></div>
+            <div className={styles.pageTitle}>Register</div>
+            <div className={styles.registerContainer}>
                 <div>
-                    <span className="content-text-black">You need to</span>
-                    <span className="content-text-red">
+                    <span className={styles.contentTextBlack}>You need to</span>
+                    <span className={styles.contentTextRed}>
                         {' '}
                         link your primary payment getway{' '}
                     </span>
-                    <span className="content-text-black">
+                    <span className={styles.contentTextBlack}>
                         account during registration to start receiving tasks.
                     </span>
                 </div>
                 <div>
-                    <span className="content-text-black">
+                    <span className={styles.contentTextBlack}>
                         Currently, you can{' '}
                     </span>
-                    <span className="content-text-red">
+                    <span className={styles.contentTextRed}>
                         only select one getway.{' '}
                     </span>
                 </div>
                 <div>
-                    <span className="content-text-red">
+                    <span className={styles.contentTextRed}>
                         After completing registration, you can set up additional
                         payment getway.
                     </span>
                 </div>
-                <img className="divider"></img>
+                <img className={styles.divider}></img>
                 <form
-                    className="form-register-container"
                     onSubmit={handleSubmit}
                 >
-                    <label className="label-input">
+                    <label className={styles.labelInput}>
                         *PrimaryPayment Getway
                     </label>
                     <Select
@@ -148,8 +147,8 @@ function RegisterBank() {
                         onChange={handleSelectChange}
                         required
                     />
-                    <div className="bank-info">
-                        <label className="label-input">*Account Title</label>
+                    <div className={styles.bankInfo}>
+                        <label className={styles.labelInput}>*Account Title</label>
                         <FormInput
                             type="text"
                             name="card_title"
@@ -157,7 +156,7 @@ function RegisterBank() {
                             handleChange={handleChange}
                             required
                         />
-                        <label className="label-input">*Gcash account</label>
+                        <label className={styles.labelInput}>*Gcash account</label>
                         <FormInput
                             type="text"
                             name="card_account"
@@ -165,7 +164,7 @@ function RegisterBank() {
                             handleChange={handleChange}
                             required
                         />
-                        <label className="label-input">
+                        <label className={styles.labelInput}>
                             *Gcash card number
                         </label>
                         <FormInput
@@ -175,7 +174,7 @@ function RegisterBank() {
                             handleChange={handleChange}
                             required
                         />
-                        <label className="label-input">*MPIN</label>
+                        <label className={styles.labelInput}>*MPIN</label>
                         <FormInput
                             type="password"
                             name="card_password"
@@ -183,7 +182,7 @@ function RegisterBank() {
                             handleChange={handleChange}
                             required
                         />
-                        <label className="label-input">*Your Balance</label>
+                        <label className={styles.labelInput}>*Your Balance</label>
                         <FormInput
                             type="number"
                             name="card_balance"
@@ -192,16 +191,16 @@ function RegisterBank() {
                             required
                         />
                         <div>
-                            <span className="content-text-red">
+                            <span className={styles.contentTextRed}>
                                 Be honest; balance updates after completion.
                             </span>
                         </div>
                     </div>
-                    <div className="container-flex">
-                        <img className="divider"></img>
+                    <div className={styles.containerFlex}>
+                        <img className={styles.divider}></img>
                         <button
                             type="submit"
-                            className="register-btn"
+                            className={styles.registerBtn}
                             disabled={!isFormValid}
                             style={{
                                 backgroundColor: isFormValid

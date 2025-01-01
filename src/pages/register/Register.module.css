@@ -1,5 +1,8 @@
-.bg-top {
-    background-image: url('../assets/bg_left_top.png');
+.layoutContainer {
+    display: grid;
+}
+.bgTop {
+    background-image: url('../../assets/bg_left_top.png');
     background-size: contain;
     background-repeat: no-repeat;
     position: fixed;
@@ -11,8 +14,8 @@
     height: 65px;
 }
 
-.ic-top-left {
-    background-image: url('../assets/ic_warning_white.png');
+.icTopLeft {
+    background-image: url('../../assets/ic_warning_white.png');
     background-size: contain;
     background-repeat: no-repeat;
     position: fixed;
@@ -25,28 +28,28 @@
     margin: 3px 0px 0px 3px;
 }
 
-.page-title {
+.pageTitle {
     font-size: 20px;
     color: #df4a3b;
     justify-self: center;
     font-weight: bold;
 }
 
-.content-text-black {
+.contentTextBlack {
     color: #22353c;
     font-size: 12px;
     margin-left: 0px;
     font-weight: bold;
 }
 
-.content-text-red {
+.contentTextRed {
     color: #df4a3b;
     font-size: 12px;
     margin-left: 0px;
     font-weight: bold;
 }
 
-.register-container {
+.registerContainer {
     justify-self: center;
     margin-top: 20px;
     margin-left: 10px;
@@ -59,13 +62,13 @@
     height: 1px;
 }
 
-.label-input {
+.labelInput {
     font-size: 14px;
     color: #df4a3b;
     font-weight: bold;
 }
 
-.forminput-style {
+.forminputStyle {
     margin-top: 5px;
     border-radius: 20px;
     border: 1px solid #bbbbbb;
@@ -74,7 +77,7 @@
     width: 95%;
 }
 
-.submit-btn {
+.submitBtn {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 3%;
@@ -89,7 +92,7 @@
     color: #fff;
 }
 
-.loader-container {
+.loaderContainer {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -105,21 +108,21 @@ input[type='number']::-webkit-outer-spin-button {
     margin: 0;
 }
 
-.bank-info {
+.bankInfo {
     border-radius: 10px;
     border: 1px solid #bbbbbb;
     padding: 10px;
     margin-top: 20px;
 }
 
-.container-flex {
+.containerFlex {
     position: absolute;
     bottom: 20px;
     left: 10px;
     right: 10px;
 }
 
-.register-btn {
+.registerBtn {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 3%;
