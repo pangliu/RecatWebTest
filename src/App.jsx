@@ -6,7 +6,7 @@ import About from './pages/About';
 import Announcement from './pages/Announcement';
 import Login from './pages/Login';
 import DownloadPage from './pages/DownloadPage';
-import Pending from './pages/Pending';
+import Pending from './pages/register/Pending';
 import RegisterBank from './pages/register/RegisterBank';
 import Register from './pages/register/Register'
 
