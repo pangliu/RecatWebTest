@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.css';
+import styles from './Pending.module.css';
 
 function Pending() {
     return (
@@ -7,14 +7,13 @@ function Pending() {
             <div className={styles.bgTop}></div>
             <div className={styles.icTopLeft}></div>
             <div className={styles.pageTitle}>Pending review</div>
-            <div className={styles.registerContainer}>
-                <div>
+            <div className={styles.pendingContainer}>
+                <div className={styles.directions}>
                     <span className={styles.contentTextBlack}>
                         our registration has been submitted for
                     </span>
                     <span className={styles.contentTextRed}> manual review.</span>
-                </div>
-                <div>
+                    <br/>
                     <span className={styles.contentTextBlack}>
                         You will be notified via email within
                     </span>
@@ -29,10 +28,10 @@ function Pending() {
                     <br />
                     <span> to be sure you can become one of us</span>
                 </div>
-                <div className={styles.containerFlex}>
+                <div className={styles.pendingBottom}>
                     <div className={styles.bgPending}></div>
                     <img className={styles.divider}></img>
-                    <button className={styles.PendingBtn}>OK</button>
+                    <button className={styles.pendingBtn}>OK</button>
                 </div>
             </div>
         </div>
