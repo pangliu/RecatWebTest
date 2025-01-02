@@ -11,14 +11,14 @@ export const SidebarData = [
         ),
         cName: 'nav-text'
     },
-    {
-        title: 'About',
-        path: 'about',
-        icon: (
-            <IoIcons.IoIosPaper style={{ fontSize: '25px', color: '#555' }} />
-        ),
-        cName: 'nav-text'
-    },
+    // {
+    //     title: 'About',
+    //     path: 'about',
+    //     icon: (
+    //         <IoIcons.IoIosPaper style={{ fontSize: '25px', color: '#555' }} />
+    //     ),
+    //     cName: 'nav-text'
+    // },
     {
         title: 'Announcement',
         path: 'announcement',

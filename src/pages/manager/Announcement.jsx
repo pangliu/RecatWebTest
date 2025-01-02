@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { OrbitProgress } from 'react-loading-indicators';
-import ApiService from '../services/apiService';
-import ApiUrls from '../services/apiUrls';
+import ApiService from '../../services/apiService';
+import ApiUrls from '../../services/apiUrls';
 import './Announcement.css';
 
 const apiService = new ApiService(ApiUrls.TEST_BASE_URL);

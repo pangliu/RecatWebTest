@@ -1,5 +1,5 @@
-.page-container {
-    background-image: url('../assets/bg_download.png');
+.pageContainer {
+    background-image: url('../../assets/bg_download.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -8,8 +8,8 @@
     position: relative;
 }
 
-.img-ninja {
-    background-image: url('../assets/bg_ninja.png');
+.imgNinja {
+    background-image: url('../../assets/bg_ninja.png');
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -23,7 +23,7 @@
     margin-right: 10px;
 }
 
-.qrcode-container {
+.qrcodeContainer {
     display: flex;
     justify-content: center;
     /* 垂直置中 */
@@ -32,7 +32,7 @@
     height: 100vh;
 }
 
-.qrcode-svg {
+.qrcodeSvg {
     height: 250px;
     width: 250px;
 }
@@ -47,7 +47,7 @@
     display: inline-block;
 }
 
-.warrning-container {
+.warrningContainer {
     background-color: rgba(0, 0, 0, 0.5);
     /* 黑色，50% 透明度 */
     position: fixed;
@@ -57,12 +57,12 @@
     justify-self: start;
 }
 
-.warrning-title {
+.warrningTitle {
     display: flex;
     align-items: center;
 }
 
-.img-icon {
+.imgIcon {
     background-image: url('../assets/ic_warrning.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -70,21 +70,21 @@
     height: 35px;
 }
 
-.text-title {
+.textTitle {
     color: #e94b42;
     font-size: 30px;
     margin-left: 20px;
     font-weight: bold;
 }
 
-.text-white {
+.textWhite {
     color: white;
     font-size: 20px;
     margin-left: 0px;
     font-weight: bold;
 }
 
-.text-red {
+.textRed {
     color: #e94b42;
     font-size: 20px;
     margin-left: 0px;

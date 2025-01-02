@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as IoIcons from 'react-icons/io';
 import { PiPasswordFill } from 'react-icons/pi';
-import ApiService from '../services/apiService';
-import ApiUrls from '../services/apiUrls';
+import ApiService from '../../services/apiService';
+import ApiUrls from '../../services/apiUrls';
 import { useNavigate } from 'react-router-dom';
 import { OrbitProgress } from 'react-loading-indicators';
 import './Login.css';
