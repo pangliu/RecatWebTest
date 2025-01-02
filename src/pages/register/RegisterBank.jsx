@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.css';
+import styles from './RegisterBank.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import ApiService from '../../services/apiService';
@@ -46,8 +46,6 @@ function RegisterBank() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [bankData, setBankData] = useState({
-        card_title: '',
-        card_account: '',
         card_number: '',
         card_password: '',
         card_balance: '',
@@ -63,8 +61,6 @@ function RegisterBank() {
 
     // 檢查必填欄位是否完成
     const isFormValid =
-        bankData.card_title.trim() !== '' &&
-        bankData.card_account.trim() !== '' &&
         bankData.card_number.trim() !== '' &&
         bankData.card_password.trim() !== '' &&
         bankData.card_balance.trim() !== '' &&
@@ -109,26 +105,25 @@ function RegisterBank() {
             <div className={styles.bgTop}></div>
             <div className={styles.icTopLeft}></div>
             <div className={styles.pageTitle}>Register</div>
-            <div className={styles.registerContainer}>
-                <div>
+            <div className={styles.bankContainer}>
+                <div className={styles.directions}>
                     <span className={styles.contentTextBlack}>You need to</span>
                     <span className={styles.contentTextRed}>
                         {' '}
                         link your primary payment getway{' '}
                     </span>
+                    <br/>
                     <span className={styles.contentTextBlack}>
                         account during registration to start receiving tasks.
                     </span>
-                </div>
-                <div>
+                    <br/>
                     <span className={styles.contentTextBlack}>
                         Currently, you can{' '}
                     </span>
                     <span className={styles.contentTextRed}>
                         only select one getway.{' '}
                     </span>
-                </div>
-                <div>
+                    <br/>
                     <span className={styles.contentTextRed}>
                         After completing registration, you can set up additional
                         payment getway.
@@ -136,34 +131,21 @@ function RegisterBank() {
                 </div>
                 <img className={styles.divider}></img>
                 <form
+                    className={styles.formStyle}
                     onSubmit={handleSubmit}
-                >
-                    <label className={styles.labelInput}>
-                        *PrimaryPayment Getway
-                    </label>
-                    <Select
-                        options={options}
-                        efaultValue={options[0]}
-                        onChange={handleSelectChange}
-                        required
-                    />
+                >   
+                    <div className={styles.selectStyle}>
+                        <label className={styles.labelInput}>
+                            *PrimaryPayment Getway
+                        </label>
+                        <Select
+                            options={options}
+                            efaultValue={options[0]}
+                            onChange={handleSelectChange}
+                            required
+                        />
+                    </div>
                     <div className={styles.bankInfo}>
-                        <label className={styles.labelInput}>*Account Title</label>
-                        <FormInput
-                            type="text"
-                            name="card_title"
-                            value={bankData.card_title}
-                            handleChange={handleChange}
-                            required
-                        />
-                        <label className={styles.labelInput}>*Gcash account</label>
-                        <FormInput
-                            type="text"
-                            name="card_account"
-                            value={bankData.card_account}
-                            handleChange={handleChange}
-                            required
-                        />
                         <label className={styles.labelInput}>
                             *Gcash card number
                         </label>
@@ -196,7 +178,7 @@ function RegisterBank() {
                             </span>
                         </div>
                     </div>
-                    <div className={styles.containerFlex}>
+                    <div className={styles.bankBottom}>
                         <img className={styles.divider}></img>
                         <button
                             type="submit"
