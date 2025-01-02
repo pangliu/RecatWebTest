@@ -45,6 +45,7 @@ function RegisterBank() {
     const registerData = location.state?.registerData;
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
     const [bankData, setBankData] = useState({
         card_number: '',
         card_password: '',
@@ -71,6 +72,7 @@ function RegisterBank() {
             ...prevBankData, // 保留其他欄位的值
             card_payment_id: selectedOption.value // 更新 card_payment_id
         }));
+        setSelectedOption(selectedOption)
     };
 
     const handleChange = (e) => {
@@ -142,41 +144,46 @@ function RegisterBank() {
                             options={options}
                             efaultValue={options[0]}
                             onChange={handleSelectChange}
+                            value={selectedOption}
                             required
                         />
                     </div>
-                    <div className={styles.bankInfo}>
-                        <label className={styles.labelInput}>
-                            *Gcash card number
-                        </label>
-                        <FormInput
-                            type="number"
-                            name="card_number"
-                            value={bankData.card_number}
-                            handleChange={handleChange}
-                            required
-                        />
-                        <label className={styles.labelInput}>*MPIN</label>
-                        <FormInput
-                            type="password"
-                            name="card_password"
-                            value={bankData.card_password}
-                            handleChange={handleChange}
-                            required
-                        />
-                        <label className={styles.labelInput}>*Your Balance</label>
-                        <FormInput
-                            type="number"
-                            name="card_balance"
-                            value={bankData.card_balance}
-                            handleChange={handleChange}
-                            required
-                        />
-                        <div>
-                            <span className={styles.contentTextRed}>
-                                Be honest; balance updates after completion.
-                            </span>
+                    <div>
+                    {selectedOption && (
+                        <div className={styles.bankInfo}>
+                            <label className={styles.labelInput}>
+                                *Gcash card number
+                            </label>
+                            <FormInput
+                                type="number"
+                                name="card_number"
+                                value={bankData.card_number}
+                                handleChange={handleChange}
+                                required
+                            />
+                            <label className={styles.labelInput}>*MPIN</label>
+                            <FormInput
+                                type="password"
+                                name="card_password"
+                                value={bankData.card_password}
+                                handleChange={handleChange}
+                                required
+                            />
+                            <label className={styles.labelInput}>*Your Balance</label>
+                            <FormInput
+                                type="number"
+                                name="card_balance"
+                                value={bankData.card_balance}
+                                handleChange={handleChange}
+                                required
+                            />
+                            <div>
+                                <span className={styles.contentTextRed}>
+                                    Be honest; balance updates after completion.
+                                </span>
+                            </div>
                         </div>
+                    )}
                     </div>
                     <div className={styles.bankBottom}>
                         <img className={styles.divider}></img>

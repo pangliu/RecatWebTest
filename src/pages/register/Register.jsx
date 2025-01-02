@@ -60,7 +60,6 @@ function Register() {
         formData.promotion_code.trim() !== '';
 
     const handleChange = (e) => {
-        console.log('isFormValid: ', isFormValid);
         const { name, value } = e.target;
         setFormData({
             ...formData,
