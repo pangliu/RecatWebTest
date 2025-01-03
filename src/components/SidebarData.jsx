@@ -9,7 +9,7 @@ export const SidebarData = [
         icon: (
             <AiIcons.AiFillHome style={{ fontSize: '25px', color: '#555' }} />
         ),
-        cName: 'nav-text'
+        cName: 'styles.menuItem'
     },
     // {
     //     title: 'About',
@@ -17,7 +17,7 @@ export const SidebarData = [
     //     icon: (
     //         <IoIcons.IoIosPaper style={{ fontSize: '25px', color: '#555' }} />
     //     ),
-    //     cName: 'nav-text'
+    //     cName: 'styles.menuItem'
     // },
     {
         title: 'Announcement',
@@ -27,6 +27,6 @@ export const SidebarData = [
                 style={{ fontSize: '25px', color: '#555' }}
             />
         ),
-        cName: 'nav-text'
+        cName: 'styles.menuItem'
     }
 ];

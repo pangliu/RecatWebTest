@@ -1,11 +1,11 @@
-.menu-list {
+.menuList {
     list-style: none;
     /* 移除列表的點樣式 */
     padding: 0px;
     /* 設定左右內邊距 */
 }
 
-.nav-text {
+.menuItem {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -13,7 +13,7 @@
     height: 60px;
 }
 
-.nav-text a {
+.menuItem a {
     text-decoration: none;
     color: black;
     font-size: 18px;
@@ -25,7 +25,7 @@
     border-radius: 4px;
 }
 
-.nav-text a:hover {
+.menuItem a:hover {
     background-color: #abcbf0;
 }
 

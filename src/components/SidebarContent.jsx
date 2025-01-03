@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
-import './Sidebar.css';
+import styles from './Sidebar.module.css'
 
 const SidebarContent = () => {
     const navigate = useNavigate();
@@ -12,10 +12,10 @@ const SidebarContent = () => {
     return (
         <div>
             <h2>Menu</h2>
-            <ul className="menu-list">
+            <ul className={styles.menuList}>
                 {SidebarData.map((item, index) => {
                     return (
-                        <li key={index} className={item.cName}>
+                        <li key={index} className={styles.menuItem}>
                             <Link to={item.path}>
                                 {item.icon}
                                 <span>{item.title}</span>
