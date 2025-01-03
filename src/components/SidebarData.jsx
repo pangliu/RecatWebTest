@@ -9,7 +9,7 @@ export const SidebarData = [
         icon: (
             <AiIcons.AiFillHome style={{ fontSize: '25px', color: '#555' }} />
         ),
-        cName: 'styles.menuItem'
+        cName: 'menuItem'
     },
     // {
     //     title: 'About',
@@ -27,6 +27,6 @@ export const SidebarData = [
                 style={{ fontSize: '25px', color: '#555' }}
             />
         ),
-        cName: 'styles.menuItem'
+        cName: 'menuItem'
     }
 ];

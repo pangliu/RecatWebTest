@@ -15,7 +15,7 @@ const SidebarContent = () => {
             <ul className={styles.menuList}>
                 {SidebarData.map((item, index) => {
                     return (
-                        <li key={index} className={styles.menuItem}>
+                        <li key={index} className={styles[item.cName]}>
                             <Link to={item.path}>
                                 {item.icon}
                                 <span>{item.title}</span>
